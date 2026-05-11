@@ -56,6 +56,19 @@ curl -X POST "https://proxy.nodesemesta.com/zen/v1/chat/completions" \
   }'
 ```
 
+Anda juga dapat mengetest endpoint `/groq` dengan model Groq (misalnya: `llama-3.3-70b-versatile`):
+
+```bash
+# Test dengan OpenAI format (Groq menggunakan format OpenAI)
+curl -X POST "https://proxy.nodesemesta.com/groq/v1/chat/completions" \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer YOUR_GROQ_API_KEY" \
+  -d '{
+    "model": "llama-3.3-70b-versatile",
+    "messages": [{"role": "user", "content": "Halo!"}]
+  }'
+```
+
 Atau gunakan script testing yang sudah disediakan:
 
 ```bash
@@ -76,6 +89,7 @@ You can choose an OpenCode upstream by adding a prefix to the Worker URL:
 | no suffix | OpenCode Go |
 | `/go` | OpenCode Go |
 | `/zen` | OpenCode Zen |
+| `/groq` | Groq (OpenAI‑compatible) |
 
 For example, use `YOUR_DEPLOYED_WORKER_URL/go` for Go models and `YOUR_DEPLOYED_WORKER_URL/zen` for Zen models.
 

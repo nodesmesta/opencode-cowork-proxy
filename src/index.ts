@@ -9,6 +9,7 @@ import { streamAnthropicToOpenAI } from './translate/stream/anthropic-to-openai'
 
 const GO_UPSTREAM = "https://opencode.ai/zen/go/v1";
 const ZEN_UPSTREAM = "https://opencode.ai/zen/v1";
+const GROQ_UPSTREAM = "https://api.groq.com/openai/v1";
 const DEFAULT_UPSTREAM = GO_UPSTREAM;
 const VISION_MODEL = "qwen3.5-plus";
 
@@ -30,6 +31,9 @@ function routeConfig(request: Request): RouteConfig {
 
   const zenPath = stripPrefix(path, "/zen");
   if (zenPath) return { path: zenPath, upstream: ZEN_UPSTREAM };
+
+  const groqPath = stripPrefix(path, "/groq");
+  if (groqPath) return { path: groqPath, upstream: GROQ_UPSTREAM };
 
   return { path, upstream: DEFAULT_UPSTREAM };
 }
@@ -168,6 +172,7 @@ async function handleRequest(request: Request): Promise<Response> {
     routes: {
       "/go": GO_UPSTREAM,
       "/zen": ZEN_UPSTREAM,
+      "/groq": GROQ_UPSTREAM,
     },
     endpoints: {
       "/v1/messages": "Anthropic → upstream (translated if upstream=openai)",
