@@ -62,7 +62,7 @@ Anda juga dapat mengetest endpoint `/groq` dengan model Groq (misalnya: `llama-3
 # Test dengan OpenAI format (Groq menggunakan format OpenAI)
 curl -X POST "https://proxy.nodesemesta.com/groq/v1/chat/completions" \
   -H "Content-Type: application/json" \
-  -H "Authorization: Bearer YOUR_GROQ_API_KEY" \
+  -H "Authorization: Bearer YOUR_API_KEY" \
   -d '{
     "model": "llama-3.3-70b-versatile",
     "messages": [{"role": "user", "content": "Halo!"}]
