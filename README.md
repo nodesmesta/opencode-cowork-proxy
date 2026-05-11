@@ -41,6 +41,28 @@ Use these values in Claude's **Configure third-party Inference** screen:
 | API key | Your OpenCode API key |
 | Models | Add manually, for example `minimax-m2.5-free` |
 
+## Testing Endpoint dengan curl
+
+Anda dapat mengetest endpoint `/zen` dengan model `minimax-m2.5-free` menggunakan curl:
+
+```bash
+# Test dengan OpenAI format
+curl -X POST "https://proxy.nodesemesta.com/zen/v1/chat/completions" \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer YOUR_API_KEY" \
+  -d '{
+    "model": "minimax-m2.5-free",
+    "messages": [{"role": "user", "content": "Halo!"}]
+  }'
+```
+
+Atau gunakan script testing yang sudah disediakan:
+
+```bash
+export ZEN_API_KEY='your-api-key-here'
+./test-zen-simple.sh
+```
+
 For the default example above, use `/zen` because `minimax-m2.5-free` is a Zen model. Use `/go` for OpenCode Go models instead. Do not add `/v1/messages` yourself. Claude adds the API path automatically.
 
 ## What This Does
